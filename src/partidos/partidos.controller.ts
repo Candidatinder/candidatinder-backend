@@ -1,3 +1,4 @@
+import { PartidosService } from './partidos.service';
 import {
   Body,
   Controller,
@@ -7,27 +8,30 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { Partido } from './partidos.model';
 
 @Controller('partidos')
 export class PartidosController {
+  constructor(private partidosService: PartidosService) {}
+
   @Get()
-  obterTodos(): string {
-    return 'retorna todos os partidos';
+  async obterTodos(): Promise<Partido[]> {
+    return this.partidosService.obterTodos();
   }
   @Get(':id')
-  obterUm(@Param() params): string {
-    return `Retorna os dados do partido ${params.id}`;
+  async obterUm(@Param() params): Promise<Partido> {
+    return this.partidosService.obterUm(params.id);
   }
   @Post()
-  criar(@Body() partido): string {
-    return 'Partido criado';
+  async criar(@Body() partido: Partido) {
+    this.partidosService.criar(partido);
   }
   @Put()
-  atualizar(@Body() partido): string {
-    return 'Partido atualizado';
+  async atualizar(@Body() partido: Partido): Promise<[number, Partido[]]> {
+    return this.partidosService.alterar(partido);
   }
   @Delete(':id')
-  apagar(@Param() params): string {
-    return `apaga o partido ${params.id}`;
+  async apagar(@Param() params) {
+    this.partidosService.apagar(params.id);
   }
 }
