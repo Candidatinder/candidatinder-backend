@@ -1,4 +1,12 @@
-import { Table, Model, Column, DataType, HasOne } from 'sequelize-typescript';
+import { Partido } from './../partidos/partidos.model';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
 
 @Table
 export class Parlamentares extends Model<Parlamentares> {
@@ -18,4 +26,10 @@ export class Parlamentares extends Model<Parlamentares> {
     allowNull: true,
   })
   idParlamentarEleito: number;
+  @ForeignKey(() => Partido)
+  @Column
+  idPartido: number;
+
+  @BelongsTo(() => Partido)
+  partido: Partido;
 }
