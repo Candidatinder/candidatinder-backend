@@ -1,3 +1,6 @@
+import { Proposta } from './propostas/propostas.model';
+import { PropostasService } from './propostas/propostas.service';
+import { PropostasController } from './propostas/propostas.controller';
 import { PartidosService } from './partidos/partidos.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -20,9 +23,9 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadModels: true,
       synchronize: true,
     }),
-    SequelizeModule.forFeature([Partido]),
+    SequelizeModule.forFeature([Partido, Proposta]),
   ],
-  controllers: [AppController, PartidosController],
-  providers: [AppService, PartidosService],
+  controllers: [AppController, PartidosController, PropostasController],
+  providers: [AppService, PartidosService, PropostasService],
 })
 export class AppModule {}

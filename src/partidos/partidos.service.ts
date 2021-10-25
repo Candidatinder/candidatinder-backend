@@ -22,6 +22,7 @@ export class PartidosService {
   }
 
   async alterar(partido: Partido): Promise<[number, Partido[]]> {
+    console.log(partido.id);
     return this.partidoModel.update(partido, {
       where: {
         id: partido.id,
