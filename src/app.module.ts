@@ -1,3 +1,5 @@
+import { VotacoesParlamentaresService } from './votacoesParlamentares/votacoesParlamentares.service';
+import { VotacoesParlamentaresController } from './votacoesParlamentares/votacoeaParlamentares.controller';
 import { UsuariosService } from './usuarios/usuarios.service';
 import { UsuariosController } from './usuarios/usuarios.controller';
 import { ParlamentaresService } from './parlamentares/parlamentares.service';
@@ -15,6 +17,7 @@ import { Partido } from './partidos/partidos.model';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 import { Usuario } from './usuarios/usuarios.model';
+import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentares.model';
 
 @Module({
   imports: [
@@ -29,7 +32,13 @@ import { Usuario } from './usuarios/usuarios.model';
       autoLoadModels: true,
       synchronize: true,
     }),
-    SequelizeModule.forFeature([Partido, Proposta, Parlamentares, Usuario]),
+    SequelizeModule.forFeature([
+      Partido,
+      Proposta,
+      Parlamentares,
+      Usuario,
+      VotacaoParlamentar,
+    ]),
   ],
   controllers: [
     AppController,
@@ -37,6 +46,7 @@ import { Usuario } from './usuarios/usuarios.model';
     PropostasController,
     ParlamentaresController,
     UsuariosController,
+    VotacoesParlamentaresController,
   ],
   providers: [
     AppService,
@@ -44,6 +54,7 @@ import { Usuario } from './usuarios/usuarios.model';
     PropostasService,
     ParlamentaresService,
     UsuariosService,
+    VotacoesParlamentaresService,
   ],
 })
 export class AppModule {}
