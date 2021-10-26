@@ -9,7 +9,7 @@ export class Usuario extends Model<Usuario> {
     type: DataType.STRING,
     allowNull: false,
   })
-  login: string;
+  email: string;
   @Column({
     type: DataType.STRING,
     allowNull: false,
