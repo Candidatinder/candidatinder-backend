@@ -1,4 +1,5 @@
 import { Partido } from './../partidos/partidos.model';
+import { VotacaoParlamentar } from './../votacoesparlamentares/votacoesparlamentares.model';
 import {
   Table,
   Model,
@@ -6,6 +7,7 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript';
 
 @Table
@@ -32,4 +34,6 @@ export class Parlamentares extends Model<Parlamentares> {
 
   @BelongsTo(() => Partido)
   partido: Partido;
+  @HasMany(() => VotacaoParlamentar)
+  parlamentares: VotacaoParlamentar[];
 }

@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { VotacaoParlamentar } from 'src/votacoesParlamentares/votacoesParlamentares.model';
 
 @Table
 export class Proposta extends Model<Proposta> {
@@ -33,4 +34,6 @@ export class Proposta extends Model<Proposta> {
     allowNull: false,
   })
   nomeProposta: string;
+  @HasMany(() => VotacaoParlamentar)
+  parlamentares: VotacaoParlamentar[];
 }
