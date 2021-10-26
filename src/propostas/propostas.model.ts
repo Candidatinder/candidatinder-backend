@@ -1,3 +1,4 @@
+import { VotacaoUsuario } from './../votacoesUsuarios/votacoesUsuarios.model';
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { VotacaoParlamentar } from 'src/votacoesParlamentares/votacoesParlamentares.model';
 
@@ -35,5 +36,7 @@ export class Proposta extends Model<Proposta> {
   })
   nomeProposta: string;
   @HasMany(() => VotacaoParlamentar)
-  parlamentares: VotacaoParlamentar[];
+  votacaoParlamentar: VotacaoParlamentar[];
+  @HasMany(() => VotacaoUsuario)
+  votacaoUsuario: VotacaoUsuario[];
 }

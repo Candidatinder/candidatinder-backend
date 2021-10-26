@@ -1,3 +1,5 @@
+import { VotacoesUsuariosController } from './votacoesUsuarios/votacoesUsuarios.controller';
+import { VotacaoUsuario } from './votacoesUsuarios/votacoesUsuarios.model';
 import { VotacoesParlamentaresService } from './votacoesParlamentares/votacoesParlamentares.service';
 import { VotacoesParlamentaresController } from './votacoesParlamentares/votacoeaParlamentares.controller';
 import { UsuariosService } from './usuarios/usuarios.service';
@@ -18,6 +20,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
 import { Usuario } from './usuarios/usuarios.model';
 import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentares.model';
+import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.service';
 
 @Module({
   imports: [
@@ -38,6 +41,7 @@ import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentare
       Parlamentares,
       Usuario,
       VotacaoParlamentar,
+      VotacaoUsuario,
     ]),
   ],
   controllers: [
@@ -47,6 +51,7 @@ import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentare
     ParlamentaresController,
     UsuariosController,
     VotacoesParlamentaresController,
+    VotacoesUsuariosController,
   ],
   providers: [
     AppService,
@@ -55,6 +60,7 @@ import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentare
     ParlamentaresService,
     UsuariosService,
     VotacoesParlamentaresService,
+    VotacoesUsuariosService,
   ],
 })
 export class AppModule {}

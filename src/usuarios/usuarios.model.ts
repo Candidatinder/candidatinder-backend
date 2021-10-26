@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { VotacaoUsuario } from 'src/votacoesUsuarios/votacoesUsuarios.model';
 
 @Table
 export class Usuario extends Model<Usuario> {
@@ -28,4 +29,6 @@ export class Usuario extends Model<Usuario> {
     allowNull: false,
   })
   idade: number;
+  @HasMany(() => VotacaoUsuario)
+  votacaoUsuario: VotacaoUsuario[];
 }
