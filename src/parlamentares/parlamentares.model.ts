@@ -1,3 +1,4 @@
+import { CandidatosUsuarios } from './../candidatosUsuarios/candidatosUsuarios.model';
 import { Partido } from './../partidos/partidos.model';
 import { VotacaoParlamentar } from './../votacoesparlamentares/votacoesparlamentares.model';
 import {
@@ -36,4 +37,6 @@ export class Parlamentares extends Model<Parlamentares> {
   partido: Partido;
   @HasMany(() => VotacaoParlamentar)
   parlamentares: VotacaoParlamentar[];
+  @HasMany(() => CandidatosUsuarios)
+  candidatosUsuarios: CandidatosUsuarios[];
 }

@@ -1,3 +1,6 @@
+import { CandidatosUsuariosService } from './candidatosUsuarios/candidatosUsuarios.service';
+import { CandidatosUsuariosController } from './candidatosUsuarios/candidatosUsuarios.controller';
+import { CandidatosUsuarios } from './candidatosUsuarios/candidatosUsuarios.model';
 import { VotacoesUsuariosController } from './votacoesUsuarios/votacoesUsuarios.controller';
 import { VotacaoUsuario } from './votacoesUsuarios/votacoesUsuarios.model';
 import { VotacoesParlamentaresService } from './votacoesParlamentares/votacoesParlamentares.service';
@@ -42,6 +45,7 @@ import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.ser
       Usuario,
       VotacaoParlamentar,
       VotacaoUsuario,
+      CandidatosUsuarios,
     ]),
   ],
   controllers: [
@@ -52,6 +56,7 @@ import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.ser
     UsuariosController,
     VotacoesParlamentaresController,
     VotacoesUsuariosController,
+    CandidatosUsuariosController,
   ],
   providers: [
     AppService,
@@ -61,6 +66,7 @@ import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.ser
     UsuariosService,
     VotacoesParlamentaresService,
     VotacoesUsuariosService,
+    CandidatosUsuariosService,
   ],
 })
 export class AppModule {}
