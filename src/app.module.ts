@@ -24,6 +24,7 @@ import { ConfigModule } from '@nestjs/config';
 import { Usuario } from './usuarios/usuarios.model';
 import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentares.model';
 import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.service';
+// import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.ser
       VotacaoUsuario,
       CandidatosUsuarios,
     ]),
+    // AuthModule,
   ],
   controllers: [
     AppController,

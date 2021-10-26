@@ -17,6 +17,14 @@ export class UsuariosService {
     return this.usuarioModel.findByPk(id);
   }
 
+  async obterPorEmail(email): Promise<Usuario> {
+    return this.usuarioModel.findOne({
+      where: {
+        email,
+      },
+    });
+  }
+
   async criar(usuario: Usuario) {
     this.usuarioModel.create(usuario);
   }

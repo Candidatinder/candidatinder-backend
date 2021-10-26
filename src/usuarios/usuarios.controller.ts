@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { Usuario } from './usuarios.model';
 
@@ -21,6 +22,10 @@ export class UsuariosController {
   @Get(':id')
   async obterUm(@Param() params): Promise<Usuario> {
     return this.usuariosService.obterUm(params.id);
+  }
+  @Get('findByFilter/:email')
+  async obterPorEmail(@Param() params): Promise<Usuario> {
+    return this.usuariosService.obterPorEmail(params.email);
   }
   @Post()
   async criar(@Body() usuario: Usuario) {
