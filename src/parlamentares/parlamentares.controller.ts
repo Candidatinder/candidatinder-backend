@@ -7,10 +7,13 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { Parlamentares } from './parlamentares.model';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('parlamentares')
+@UseGuards(AuthGuard('jwt'))
 export class ParlamentaresController {
   constructor(private parlamentaresService: ParlamentaresService) {}
 

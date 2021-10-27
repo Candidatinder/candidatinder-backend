@@ -1,5 +1,5 @@
 import { Usuario } from './usuarios.model';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
@@ -18,11 +18,15 @@ export class UsuariosService {
   }
 
   async obterPorEmail(email): Promise<Usuario> {
-    return this.usuarioModel.findOne({
-      where: {
-        email,
-      },
-    });
+    try {
+      return this.usuarioModel.findOne({
+        where: {
+          email,
+        },
+      });
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   async criar(usuario: Usuario) {

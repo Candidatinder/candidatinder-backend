@@ -1,3 +1,4 @@
+import { UsuariosModule } from './usuarios/usuarios.module';
 import { CandidatosUsuariosService } from './candidatosUsuarios/candidatosUsuarios.service';
 import { CandidatosUsuariosController } from './candidatosUsuarios/candidatosUsuarios.controller';
 import { CandidatosUsuarios } from './candidatosUsuarios/candidatosUsuarios.model';
@@ -24,7 +25,7 @@ import { ConfigModule } from '@nestjs/config';
 import { Usuario } from './usuarios/usuarios.model';
 import { VotacaoParlamentar } from './votacoesParlamentares/votacoesParlamentares.model';
 import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.service';
-// import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -48,14 +49,14 @@ import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.ser
       VotacaoUsuario,
       CandidatosUsuarios,
     ]),
-    // AuthModule,
+    AuthModule,
+    UsuariosModule,
   ],
   controllers: [
     AppController,
     PartidosController,
     PropostasController,
     ParlamentaresController,
-    UsuariosController,
     VotacoesParlamentaresController,
     VotacoesUsuariosController,
     CandidatosUsuariosController,
@@ -65,7 +66,6 @@ import { VotacoesUsuariosService } from './votacoesUsuarios/votacoesUsuarios.ser
     PartidosService,
     PropostasService,
     ParlamentaresService,
-    UsuariosService,
     VotacoesParlamentaresService,
     VotacoesUsuariosService,
     CandidatosUsuariosService,

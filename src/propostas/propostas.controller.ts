@@ -7,10 +7,13 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { Proposta } from './propostas.model';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('propostas')
+@UseGuards(AuthGuard('jwt'))
 export class PropostasController {
   constructor(private propostasService: PropostasService) {}
 

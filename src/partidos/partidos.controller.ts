@@ -7,10 +7,13 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { Partido } from './partidos.model';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('partidos')
+@UseGuards(AuthGuard('jwt'))
 export class PartidosController {
   constructor(private partidosService: PartidosService) {}
 
