@@ -8,5 +8,5 @@ export class UpdateUsuarioDto {
   estado: string;
 
   @IsNotEmpty()
-  idade: number;
+  anoNascimento: number;
 }

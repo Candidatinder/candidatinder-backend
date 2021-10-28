@@ -26,8 +26,8 @@ export class UsuariosEntity {
   @Column()
   estado: string;
 
-  @Column()
-  idade: number;
+  @Column({ name: 'ano_nascimento' })
+  anoNascimento: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

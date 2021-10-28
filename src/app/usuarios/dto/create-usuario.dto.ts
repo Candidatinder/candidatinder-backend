@@ -14,7 +14,7 @@ export class CreateUsuarioDto {
   estado: string;
 
   @IsNotEmpty()
-  idade: number;
+  anoNascimento: number;
 
   @IsNotEmpty()
   @Matches(RegExHelper.password, { message: MessagesHelper.PASSWORD_VALID })

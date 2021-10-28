@@ -14,7 +14,7 @@ export class UsuariosService {
 
   async findAll() {
     return await this.usuariosRepository.find({
-      select: ['id', 'nome', 'email', 'estado', 'idade'],
+      select: ['id', 'nome', 'email', 'estado', 'anoNascimento'],
     });
   }
 
