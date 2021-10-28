@@ -1,3 +1,4 @@
+import { PartidosModule } from './app/partidos/partidos.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     } as TypeOrmModuleOptions),
     UsuariosModule,
     AuthModule,
+    PartidosModule,
   ],
   controllers: [],
   providers: [],
