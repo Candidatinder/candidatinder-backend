@@ -13,7 +13,6 @@ export class CreateUsuarioDto {
   @IsNotEmpty()
   estado: string;
 
-  @IsNotEmpty()
   anoNascimento: number;
 
   @IsNotEmpty()

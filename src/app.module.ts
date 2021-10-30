@@ -1,3 +1,4 @@
+import { PropostasModule } from './app/propostas/propostas.module';
 import { PartidosModule } from './app/partidos/partidos.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
     UsuariosModule,
     AuthModule,
     PartidosModule,
+    PropostasModule,
   ],
   controllers: [],
   providers: [],
