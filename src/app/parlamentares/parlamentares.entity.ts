@@ -1,9 +1,11 @@
+import { VotacoesParlamentaresEntity } from './../votacoesParlamentares/votacoes-parlamentares.entity';
 import { PartidosEntity } from './../partidos/partidos.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   ManyToOne,
+  OneToMany,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -37,4 +39,11 @@ export class ParlamentaresEntity {
     (partido: PartidosEntity) => partido.parlamentaresEntity,
   )
   partido: PartidosEntity;
+
+  @OneToMany(
+    () => VotacoesParlamentaresEntity,
+    (votacoesParlamentaresEntity: VotacoesParlamentaresEntity) =>
+      votacoesParlamentaresEntity.parlamentar,
+  )
+  votacoesParlamentaresEntity: VotacoesParlamentaresEntity[];
 }

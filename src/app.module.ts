@@ -1,3 +1,4 @@
+import { VotacoesParlamentaresModule } from './app/votacoesParlamentares/votacoes-parlamentares.module';
 import { ParlamentaresModule } from './app/parlamentares/parlamentares.module';
 import { PropostasModule } from './app/propostas/propostas.module';
 import { PartidosModule } from './app/partidos/partidos.module';
@@ -25,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
     PartidosModule,
     PropostasModule,
     ParlamentaresModule,
+    VotacoesParlamentaresModule,
   ],
   controllers: [],
   providers: [],
