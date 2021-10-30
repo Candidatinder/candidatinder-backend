@@ -1,3 +1,4 @@
+import { ParlamentaresUsuarioEntity } from './../parlamentaresUsuarios/parlamentares-usuarios.entity';
 import { VotacoesParlamentaresEntity } from './../votacoesParlamentares/votacoes-parlamentares.entity';
 import { PartidosEntity } from './../partidos/partidos.entity';
 import {
@@ -46,4 +47,11 @@ export class ParlamentaresEntity {
       votacoesParlamentaresEntity.parlamentar,
   )
   votacoesParlamentaresEntity: VotacoesParlamentaresEntity[];
+
+  @OneToMany(
+    () => ParlamentaresUsuarioEntity,
+    (parlamentaresUsuarioEntity: ParlamentaresUsuarioEntity) =>
+      parlamentaresUsuarioEntity.parlamentar,
+  )
+  parlamentaresUsuarioEntity: ParlamentaresUsuarioEntity[];
 }

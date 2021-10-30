@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
 import { VotacoesUsuariosEntity } from '../votacoesUsuarios/votacoes-usuarios.entity';
+import { ParlamentaresUsuarioEntity } from '../parlamentaresUsuarios/parlamentares-usuarios.entity';
 
 @Entity({ name: 'usuarios' })
 export class UsuariosEntity {
@@ -51,4 +52,11 @@ export class UsuariosEntity {
       votacoesUsuariosEntity.usuario,
   )
   votacoesUsuariosEntity: VotacoesUsuariosEntity[];
+
+  @OneToMany(
+    () => ParlamentaresUsuarioEntity,
+    (parlamentaresUsuarioEntity: ParlamentaresUsuarioEntity) =>
+      parlamentaresUsuarioEntity.usuario,
+  )
+  parlamentaresUsuarioEntity: ParlamentaresUsuarioEntity[];
 }
