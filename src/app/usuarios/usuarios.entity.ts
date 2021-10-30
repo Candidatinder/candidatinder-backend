@@ -4,10 +4,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { hashSync } from 'bcrypt';
+import { VotacoesUsuariosEntity } from '../votacoesUsuarios/votacoes-usuarios.entity';
 
 @Entity({ name: 'usuarios' })
 export class UsuariosEntity {
@@ -42,4 +44,11 @@ export class UsuariosEntity {
   hashPassword() {
     this.password = hashSync(this.password, 10);
   }
+
+  @OneToMany(
+    () => VotacoesUsuariosEntity,
+    (votacoesUsuariosEntity: VotacoesUsuariosEntity) =>
+      votacoesUsuariosEntity.usuario,
+  )
+  votacoesUsuariosEntity: VotacoesUsuariosEntity[];
 }

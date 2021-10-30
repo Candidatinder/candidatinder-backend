@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { VotacoesParlamentaresEntity } from '../votacoesParlamentares/votacoes-parlamentares.entity';
+import { VotacoesUsuariosEntity } from '../votacoesUsuarios/votacoes-usuarios.entity';
 
 @Entity({ name: 'propostas' })
 export class PropostasEntity {
@@ -47,4 +48,11 @@ export class PropostasEntity {
       votacoesParlamentaresEntity.proposta,
   )
   votacoesParlamentaresEntity: VotacoesParlamentaresEntity[];
+
+  @OneToMany(
+    () => VotacoesUsuariosEntity,
+    (votacoesUsuariosEntity: VotacoesUsuariosEntity) =>
+      votacoesUsuariosEntity.proposta,
+  )
+  votacoesUsuariosEntity: VotacoesUsuariosEntity[];
 }
