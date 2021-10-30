@@ -15,26 +15,26 @@ import { AuthGuard } from '@nestjs/passport';
 import { ParlamentaresUsuarioDto } from './dto/parlamentares-usuarios.dto';
 import { ParlamentaresUsuarioService } from './parlamentares-usuarios.service';
 
-@Controller('api/v1/votacoesparlamentares')
+@Controller('api/v1/parlamentaresusuarios')
 @UseGuards(AuthGuard('jwt'))
 export class ParlamentaresUsuariosController {
   constructor(
-    private readonly votacoesparlamentaresService: ParlamentaresUsuarioService,
+    private readonly parlamentaresusuariosService: ParlamentaresUsuarioService,
   ) {}
 
   @Get()
   async index() {
-    return await this.votacoesparlamentaresService.findAll();
+    return await this.parlamentaresusuariosService.findAll();
   }
 
   @Post()
   async store(@Body() body: ParlamentaresUsuarioDto) {
-    return await this.votacoesparlamentaresService.store(body);
+    return await this.parlamentaresusuariosService.store(body);
   }
 
   @Get(':id')
   async show(@Param('id', new ParseUUIDPipe()) id: string) {
-    return await this.votacoesparlamentaresService.findOneOrFail({ id });
+    return await this.parlamentaresusuariosService.findOneOrFail({ id });
   }
 
   @Put(':id')
@@ -42,12 +42,12 @@ export class ParlamentaresUsuariosController {
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: ParlamentaresUsuarioDto,
   ) {
-    return await this.votacoesparlamentaresService.update(id, body);
+    return await this.parlamentaresusuariosService.update(id, body);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
-    await this.votacoesparlamentaresService.destroy(id);
+    await this.parlamentaresusuariosService.destroy(id);
   }
 }
