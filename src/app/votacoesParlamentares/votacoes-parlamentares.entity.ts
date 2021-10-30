@@ -1,3 +1,4 @@
+import { PropostasEntity } from './../propostas/propostas.entity';
 import { ParlamentaresEntity } from './../parlamentares/parlamentares.entity';
 import {
   Column,
@@ -25,6 +26,12 @@ export class VotacoesParlamentaresEntity {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: string;
+
+  @ManyToOne(
+    () => PropostasEntity,
+    (proposta: PropostasEntity) => proposta.votacoesParlamentaresEntity,
+  )
+  proposta: PropostasEntity;
 
   @ManyToOne(
     () => ParlamentaresEntity,

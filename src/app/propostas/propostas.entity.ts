@@ -4,8 +4,10 @@ import {
   DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  OneToMany,
   UpdateDateColumn,
 } from 'typeorm';
+import { VotacoesParlamentaresEntity } from '../votacoesParlamentares/votacoes-parlamentares.entity';
 
 @Entity({ name: 'propostas' })
 export class PropostasEntity {
@@ -38,4 +40,11 @@ export class PropostasEntity {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: string;
+
+  @OneToMany(
+    () => VotacoesParlamentaresEntity,
+    (votacoesParlamentaresEntity: VotacoesParlamentaresEntity) =>
+      votacoesParlamentaresEntity.proposta,
+  )
+  votacoesParlamentaresEntity: VotacoesParlamentaresEntity[];
 }
