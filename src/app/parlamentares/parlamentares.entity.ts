@@ -1,24 +1,27 @@
-import { ParlamentaresEntity } from './../parlamentares/parlamentares.entity';
+import { PartidosEntity } from './../partidos/partidos.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'partidos' })
-export class PartidosEntity {
+@Entity({ name: 'parlamentares' })
+export class ParlamentaresEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  siglaPartido: string;
+  nomeParlamentar: string;
 
   @Column()
-  nomePartido: string;
+  estadoParlamentar: string;
+
+  @Column({ nullable: true })
+  idParlamentarEleito: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
@@ -29,9 +32,9 @@ export class PartidosEntity {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: string;
 
-  @OneToMany(
-    () => ParlamentaresEntity,
-    (parlamentaresEntity: ParlamentaresEntity) => parlamentaresEntity.partido,
+  @ManyToOne(
+    () => PartidosEntity,
+    (partido: PartidosEntity) => partido.parlamentaresEntity,
   )
-  parlamentaresEntity: ParlamentaresEntity[];
+  partido: PartidosEntity;
 }

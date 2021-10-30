@@ -1,3 +1,4 @@
+import { ParlamentaresModule } from './app/parlamentares/parlamentares.module';
 import { PropostasModule } from './app/propostas/propostas.module';
 import { PartidosModule } from './app/partidos/partidos.module';
 import { Module } from '@nestjs/common';
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     PartidosModule,
     PropostasModule,
+    ParlamentaresModule,
   ],
   controllers: [],
   providers: [],

@@ -16,10 +16,10 @@ import { PartidoDto } from './dto/partido.dto';
 import { PartidosService } from './partidos.service';
 
 @Controller('api/v1/partidos')
+@UseGuards(AuthGuard('jwt'))
 export class PartidosController {
   constructor(private readonly partidosService: PartidosService) {}
 
-  @UseGuards(AuthGuard('jwt'))
   @Get()
   async index() {
     return await this.partidosService.findAll();
@@ -30,13 +30,11 @@ export class PartidosController {
     return await this.partidosService.store(body);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   async show(@Param('id', new ParseUUIDPipe()) id: string) {
     return await this.partidosService.findOneOrFail({ id });
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -45,7 +43,6 @@ export class PartidosController {
     return await this.partidosService.update(id, body);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {

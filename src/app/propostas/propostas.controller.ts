@@ -16,10 +16,10 @@ import { PropostaDto } from './dto/proposta.dto';
 import { PropostasService } from './propostas.service';
 
 @Controller('api/v1/propostas')
+@UseGuards(AuthGuard('jwt'))
 export class PropostasController {
   constructor(private readonly propostasService: PropostasService) {}
 
-  @UseGuards(AuthGuard('jwt'))
   @Get()
   async index() {
     return await this.propostasService.findAll();
@@ -30,13 +30,11 @@ export class PropostasController {
     return await this.propostasService.store(body);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   async show(@Param('id', new ParseUUIDPipe()) id: string) {
     return await this.propostasService.findOneOrFail({ id });
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -45,7 +43,6 @@ export class PropostasController {
     return await this.propostasService.update(id, body);
   }
 
-  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
