@@ -22,7 +22,7 @@ export class ParlamentaresUsuarioEntity {
   quantidadeMatchs: number;
 
   @Column()
-  quantidadeParticipantes: number;
+  quantidadeParticipacoes: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
