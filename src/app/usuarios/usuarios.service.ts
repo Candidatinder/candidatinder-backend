@@ -30,11 +30,18 @@ export class UsuariosService {
   }
 
   async store(data: CreateUsuarioDto) {
+    // Aqui também deve atualizar a tabela parlamentaresUsuarios com todos os parlamentares
+    // que são do mesmo estado, atribuindo zero para os campos
+    // quantidadeMatchs, quantidadeParticipacoes e ordemAfinidade
     const usuario = this.usuariosRepository.create(data);
     return await this.usuariosRepository.save(usuario);
   }
 
   async update(id: string, data: UpdateUsuarioDto) {
+    // Aqui depois de uma confirmação do front, caso o usuário esteja alterando o estado,
+    // deve apagar todos os palamentaresUsuarios dele, e depois realizar o procedimento do
+    // store acima. Além disso, é preciso varrer todos as votacoesUsuarios e para cada votacao,
+    // realizar o procedimento do store, mas sem inclusão.
     const usuario = await this.findOneOrFail({ id });
     this.usuariosRepository.merge(usuario, data);
     return await this.usuariosRepository.save(usuario);
