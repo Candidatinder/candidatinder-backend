@@ -30,6 +30,11 @@ export class VotacoesUsuariosService {
   }
 
   async store(data: VotacaoUsuarioDto) {
+    // aqui vai ser feito o match:
+    // 1. separar todas as votacoes de candidatos do mesmo estado da mesma proposta;
+    // 2. para cada deputado, verificar se a votacao da proposta foi a mesma do usuario;
+    // 3. caso afirmativo, somar +1 quatidadeMatchs;
+    // 4. independente, somar +1 quantidadeParticipacoes;
     const votacaoUsuario = this.votacoesUsuariosRepository.create(data);
     return await this.votacoesUsuariosRepository.save(votacaoUsuario);
   }
@@ -39,12 +44,10 @@ export class VotacoesUsuariosService {
     this.votacoesUsuariosRepository.merge(votacaoUsuario, data);
     // aqui vai ser feito o match:
     // 1. separar todas as votacoes de candidatos do mesmo estado da mesma proposta;
-    // 2. caso ainda não tenha, preencher a tabela parlamentaresUsuarios com todos os deputados do mesmo estado;
-    // e colocar 0 para os valores;
-    // 2. para cada deputado, verificar se a votacao da proposta foi a mesma do usuario;
+    // 2. para cada deputado, verificar a se votacao da proposta foi a mesma do usuario;
     // 3. caso afirmativo, somar +1 quatidadeMatchs;
-    // 4. independente, somar +1 quantidadeParticipacoes;
-    // 5. caso seja uma alteracao de voto, nao mexer na quantidade de Participacoes, soh na de Matchs
+    // 4. caso negativo, diminuir -1 quantidadeMatchs;
+    // 5. nao mexer na quantidade de Participacoes, soh na de Matchs
     return await this.votacoesUsuariosRepository.save(votacaoUsuario);
   }
 
